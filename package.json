@@ -1,5 +1,5 @@
 {
-  "name": "htmlcss",
+  "name": "html",
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
@@ -35,5 +35,8 @@
     "gulp-webp-css": "^1.1.0",
     "gulp-webp-html": "^1.0.2",
     "gulp-webpcss": "^1.1.1"
+  },
+  "dependencies": {
+    "dart-sass": "^1.25.0"
   }
 }

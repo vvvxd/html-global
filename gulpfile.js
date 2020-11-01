@@ -29,16 +29,16 @@ let gulp = require('gulp');
 let browsersync = require('browser-sync').create();
 let fileinclude = require('gulp-file-include');
 let del = require('del');
-let scss = require('gulp-sass');
+let sass = require('gulp-sass');
 let autoprefixer = require('gulp-autoprefixer');
 let groupMedia = require('gulp-group-css-media-queries');
 let cleanCss = require('gulp-clean-css');
 let rename = require('gulp-rename');
 let uglify = require('gulp-uglify-es').default;
 let imagemin = require('gulp-imagemin');
-let webp = require('gulp-webp');
-let webpHtml = require('gulp-webp-html');
-let webpCss = require('gulp-webp-css');
+// let webp = require('gulp-webp');
+// let webpHtml = require('gulp-webp-html');
+// let webpCss = require('gulp-webp-css');
 let svgSprite = require('gulp-svg-sprite');
 
 function browserSync() {
@@ -54,14 +54,14 @@ function browserSync() {
 function html() {
     return src(path.src.html)
         .pipe(fileinclude())
-        .pipe(webpHtml())
+        //.pipe(webpHtml())
         .pipe(dest(path.build.html))
         .pipe(browsersync.stream())
 }
 
 function css() {
     return src(path.src.css)
-        .pipe(scss({
+        .pipe(sass({
             outputStyle:'expanded'
         }))
         .pipe(
@@ -73,7 +73,7 @@ function css() {
                 cascade:true
             })
         )
-        .pipe(webpCss())
+        // .pipe(webpCss())
         .pipe(dest(path.build.css))
         .pipe(cleanCss())
         .pipe(
@@ -103,11 +103,11 @@ function js() {
 
 function img() {
     return src(path.src.img)
-        .pipe(
-            webp({
-                quality:70
-            })
-        )
+        // .pipe(
+        //     webp({
+        //         quality:70
+        //     })
+        // )
         .pipe(dest(path.build.img))
         .pipe(src(path.src.img))
         .pipe(
